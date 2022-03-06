@@ -4,6 +4,40 @@
 - Data Parsing Scrit : _ot_parse_data.py_
 - Output File : _output.json_ 
 
+There are two ways to run the script:
+1. Run inside docker container
+2. Run it on the system
+
+## Runnning with Docker
+
+
+Create the directory for the data
+
+
+```bash
+$ mkdir data
+
+$ DATA_DIR=$PWD/data
+
+# Pull docker image
+$ docker pull kjdodiya/parse_ot_dataset:0.0.3
+
+# Run
+$ docker run --name ot-tech-test -it -v $DATA_DIR:/usr/src/ot-ebi01989-code/data  parse_ot_dataset:0.0.3 /bin/bash
+
+root@243ac79622fc:/usr/src/ot-ebi01989-code# 
+
+# Download data
+root@243ac79622fc:/usr/src/ot-ebi01989-code# ./ot_data_download.sh -o data --data-version 21.11
+
+# Run the data parser script
+root@243ac79622fc:/usr/src/ot-ebi01989-code# python ot_data_parser.py --datadir ./data/ --outfile  ebi01989_output.json
+
+
+```
+
+## Running on System
+
 ## Clone the code
 ```bash
 $ git clone https://github.com/kjdodiya/parse_ot_dataset.git
@@ -78,4 +112,38 @@ $ pip3 install -r requirement.txt
 ```bash
 # Run Script
 $ python code/ot_data_parser.py --datadir ./data/ --outfile  ebi01989_output.json
+```
+
+
+## Outputfile
+
+The output file ebi01989_output.json.
+
+```json
+[
+    {
+        "approvedSymbol": "DPM1",
+        "diseaseId": "EFO_0003847",
+        "median_score": 0.0,
+        "name": "mental retardation",
+        "score": [
+            0.0
+        ],
+        "targetId": "ENSG00000000419"
+    },
+    ...
+    ...
+    {
+        "approvedSymbol": "POLD1",
+        "diseaseId": "EFO_0004230",
+        "median_score": 0.0,
+        "name": "endometrial neoplasm",
+        "score": [
+            0.3,
+            0.0,
+            0.0
+        ],
+        "targetId": "ENSG00000062822"
+    }
+]
 ```

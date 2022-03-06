@@ -4,17 +4,17 @@
 - Data Parsing Scrit : _ot_parse_data.py_
 - Output File : _output.json_ 
 
-# Clone the code
+## Clone the code
 ```bash
-$ git clone https://github.com/kjdodiya/ebi-01989-march-2022.git
-$ cd ebi-01989-march-2022
+$ git clone https://github.com/kjdodiya/parse_ot_dataset.git
+$ cd parse_ot_dataset
 ```
 
 ## Data Preparation
 - ### Install wget
     wget is a utility to download data. Here are some articles on installing wget on Linux/Mac.
     
-    Linux : https://www.tecmint.com/install-wget-in-linux/
+    Linux : https://www.tecmint.com/install-wget-in-linux/ <br>
     Mac   : https://www.maketecheasier.com/install-wget-mac/
 
 - ### Downloading Data
@@ -35,7 +35,7 @@ $ cd ebi-01989-march-2022
         ```bash
         # Create directories
         data_dir=data
-        mkdir -p $data_dir/{evidence targets diseases}
+        mkdir -p $data_dir/{evidence,targets,diseases}
         
         # Evidence Data
         $ wget --no-parent --level=1 --no-directories --directory-prefix=$data_dir/evidence --accept=*.parquet -r ftp://ftp.ebi.ac.uk/pub/databases/opentargets/platform/21.11/output/etl/parquet/evidence/sourceId=eva/
@@ -70,5 +70,5 @@ $ pip3 install -r requirement.txt
 ## Running Script
 ```bash
 # Run Script
-$ python code/ot_data_parser.py --datadir ./data/ --outfile ebi01989_output.json
+$ python code/ot_data_parser.py --datadir ./data/ --outfile  output.json
 ```

@@ -26,7 +26,14 @@ $ cd parse_ot_dataset
         - Create _evidence targets diseases_ directories in the _data_ directory
         - Downloads the data in the parquet format.
         ```bash
-        $ ./code/ot_data_download.sh
+        $ ./code/ot_data_download.sh -o data --data-version 21.11
+            Usage: ./ot_data_download.sh [OPTION]...
+            Options :
+                 -d, --dry       Dry run. Shows commands which will be executed.
+                 -o, --out-dir      Save files at out-dir/..
+                 -v, --data-version     Opentarget Data version to download.
+
+            Example: ./ot_data_download.sh -d -o ./data --data-version 21.11
         ```
 
     - #### Run Commands Manually
@@ -70,5 +77,5 @@ $ pip3 install -r requirement.txt
 ## Running Script
 ```bash
 # Run Script
-$ python code/ot_data_parser.py --datadir ./data/ --outfile  output.json
+$ python code/ot_data_parser.py --datadir ./data/ --outfile  ebi01989_output.json
 ```

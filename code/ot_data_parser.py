@@ -121,6 +121,19 @@ class EvidenceParser:
         self.result.to_json(out_file, orient="records")
         print("\n!!!! Data exported to {outfile}".format(outfile=out_file))
 
+    def target_target_pair(self):
+        df1 = self.result
+        df2 = self.result
+        # Join on targetID
+        tt_pair = pd.merge(
+            df1, df2, left_on="targetId", right_on="targetId"
+        )
+
+        # Remove all the rows having same diseasesID
+        tt_pair_dif_diseases = tt_pair[tt_pair['diseaseId_x'] != tt_pair['diseaseId_y']]
+
+        tt_pair_count = tt_pair_dif_diseases['targetId'].count()/2
+        print ("Target Target Pair sharing connection with atleast two diseases {tt_pair_count}".format(tt_pair_count=int(tt_pair_count)))
 
 if __name__ == "__main__":
     ARG_PARSER = argparse.ArgumentParser()
@@ -144,3 +157,4 @@ if __name__ == "__main__":
     ep = EvidenceParser(data_dir, "diseaseId", "targetId", "score")
     ep.parse_data()
     ep.export_data(outfile)
+    ep.target_target_pair()

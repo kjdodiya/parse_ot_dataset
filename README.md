@@ -44,7 +44,7 @@ $ mkdir $DATA_DIR
 <a name="pull_docker_image"></a>
 ### Pull docker image 
 ```bash
-$ docker pull kjdodiya/parse_ot_dataset:0.0.3
+$ docker pull kjdodiya/parse_ot_dataset:0.0.4
 ```
 
 <a name="run_docker_image"></a>

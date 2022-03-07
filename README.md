@@ -44,7 +44,7 @@ $ mkdir $DATA_DIR
 <a name="pull_docker_image"></a>
 ### Pull docker image 
 ```bash
-$ docker pull kjdodiya/parse_ot_dataset:0.0.4
+$ docker pull kamaldodiya/parse_ot_dataset
 ```
 
 <a name="run_docker_image"></a>
@@ -52,7 +52,7 @@ $ docker pull kjdodiya/parse_ot_dataset:0.0.4
 
 ```bash
 # Run
-$ docker run --name ot-tech-test -it -v $DATA_DIR:/usr/src/ot-ebi01989-code/data  parse_ot_dataset:0.0.3 /bin/bash
+$ docker run --name ot-tech-test -it -v $DATA_DIR:/usr/src/ot-ebi01989-code/data  kamaldodiya/parse_ot_dataset /bin/bash
 
 root@243ac79622fc:/usr/src/ot-ebi01989-code# 
 
